@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Analisis de Algoritmos</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="./css/styles.css">
+	<link rel="shortcut icon" type="image/x-icon" href="./favicon.ico"> 
+</head>
+<body>
+
+	<div class="topnav" id="myTopnav">
+	  <a href="index.html">Practica 1</a>
+	  <a href="p2.html" class="active">Practica 2</a>
+	  <a href="p3.html">Practica 3</a>
+	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+	    <i class="fa fa-bars"></i>
+	  </a>
+	</div>	
+
+	<div class="container">
+		<label>Ingrese la longitud de numeros a multiplicar:</label>
+		<div class="form-group">
+		    <select class="custom-select" id="cantidadAleatorios" required>
+				<option value="">Seleccione una cantidad</option>
+				<option value="128">128</option>
+				<option value="256">256</option>
+				<option value="512">512</option>
+				<option value="1024">1024</option>
+				<option value="2048">2048</option>
+				<option value="4096">4096</option>
+				<option value="8192">8192</option>
+				<option value="16384">16384</option>
+				<option value="131072">131072</option>
+				<option value="1048576">1048576</option>
+			</select>
+		</div>
+		<button type="button" class="btn btn-primary" onclick="generar($('#cantidadAleatorios').val());">Generar</button><br><br>
+
+		<div id="numero1" style="max-height: 150px;overflow: scroll;"></div>
+		<div id="numero2" style="max-height: 150px;overflow: scroll;"></div>
+
+		<button id="btnMultiplicar" type="button" class="btn btn-primary" onclick="multiplicar();" style="display: none">Multiplicar</button><br><br>
+
+		<div id="resultadoOrdinario" style="max-height: 150px;overflow: scroll;"></div>
+		<div id="resultadoOrdinarioTime"></div>
+
+		<div id="resultadoKaratsuba" style="max-height: 150px;overflow: scroll;"></div>
+		<div id="resultadoKaratsubaTime"></div>
+
+		<button type="button" class="btn btn-primary" onclick="graficar();">Graficar y comparar</button><br><br>
+
+		<div class="row">
+			<div class="col col-lg-4 col-md-4 col-sm-2">
+				<div id="graficas" style="height: 250px;display: none"></div>
+			</div>
+		</div>
+	</div>
+	<script src="./js/jquery-3.3.1.slim.min.js"></script>
+	<script src="./js/moment.min.js"></script>
+	<script src="./js/raphael-min.js"></script>
+	<script src="./js/morris.min.js"></script>
+	<script src="./js/navbar.js"></script>
+	<script src="./js/myJs2.js"></script>
+</body>
+</html>
