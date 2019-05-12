@@ -12,6 +12,7 @@ function generar(cant) {
 
 function calcularTransformadas() {
 	var timeInicial = new Date().getTime();
+	$('#resultadoDiscreto').append("<strong>Discreta</strong><br>");
 	transformadaDiscreta(arrayGenerado);
 	var timeFinal = new Date().getTime();
 	var diff1 = (timeFinal - timeInicial)/1000;
@@ -47,65 +48,33 @@ function transformadaDiscreta(array) { //Se aplica unicamente la formula Discret
  		muestreoResultado[i] = Math.sqrt(Math.pow(muestreoResultadoComplejo[i][0],2)+Math.pow(muestreoResultadoComplejo[i][1],2));
  		console.log(muestreoResultadoComplejo[i]);
  		console.log(muestreoResultado[i]);
+ 		$('#resultadoDiscreto').append("<strong style='color:green'>"+muestreoResultadoComplejo[i][0]+"</strong> + "
+ 									  +"<strong style='color:red'>"+muestreoResultadoComplejo[i][1]+"i</strong> => Modulo: "+muestreoResultado[i]+" <br>");
 	}
-	graficarPuntos(muestreoResultado);
 }
 
-function graficarPuntos(array) {
-	var mycanvas = document.getElementById("tranformadaDiscreta");
-	var contexto = mycanvas.getContext("2d");
-	var X = mycanvas.width;
-	var Y = mycanvas.height;
-	for (var i = 0; i < array.length*20; i = i+20) {
-		contexto.beginPath();	
-		contexto.arc(i,array[i],2,0,(Math.PI/180)*360,true);
-		contexto.strokeStyle = "red";
-		contexto.fill();
-		contexto.lineWidth = 1;
-		contexto.stroke();
-	}
 
+function transformadaRapida(array) {
+	
 }
-
 
 function getAleatorio(minimo,maximo){
 	return Math.round(Math.random() * (maximo - minimo) + minimo);
 }
 
-//graficaOriginal();
 
-function graficaOriginal() {
-	var mycanvas = document.getElementById("funcionOriginal");
-	var contexto = mycanvas.getContext("2d");
-	var cw = mycanvas.width;
-	var ch = mycanvas.height;
-	var cx = cw / 2;
-  	var cy = ch / 2;
-  	var rad = Math.PI / 180;
-  	var w = cw;
-	var h = 200;
-	var amplitud = h / 2;
-	var frecuencia = 1/100;
-	var faseInicial = Math.PI/2;
-	
-	//Dibujamos los ejes
-	contexto.moveTo(0,0);
-	contexto.lineTo(0,ch);
-	contexto.moveTo(0,cy);
-	contexto.lineTo(cw,cy);
-	contexto.lineWidth = 4;
-	contexto.strokeStyle = "black";
-	contexto.stroke();
 
-	//Dibujando
-	contexto.beginPath();
-	contexto.moveTo(0, ch);
-	for (var x = 0; x < w; x++) {
-		y = Math.sin(x * frecuencia + faseInicial) * amplitud + amplitud;
-		contexto.lineTo(x, y + cy/2);
-	}
-	contexto.lineTo(w, ch);
-	contexto.lineTo(0, ch);
-	contexto.stroke();
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
