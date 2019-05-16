@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Analisis de Algoritmos</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="./css/styles.css">
+	<link rel="shortcut icon" type="image/x-icon" href="./favicon.ico"> 
+</head>
+<body>
+
+	<div class="topnav" id="myTopnav">
+	  <a href="index.html">Practica 1</a>
+	  <a href="p2.html">Practica 2</a>
+	  <a href="p3.html">Practica 3</a>
+	  <a href="p4.html">Practica 4</a>
+	  <a href="p5.html" class="active">Practica 5</a>
+	  <a href="p6.html">Practica 6</a>
+	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+	    <i class="fa fa-bars"></i>
+	  </a>
+	</div>	
+
+	<div class="container">
+		<label>Ingrese la longitud de las cadenas a generar</label>
+		<div class="form-group">
+		    <select class="custom-select" id="cantidadAleatorios" required>
+				<option value="">Seleccione una cantidad</option>
+				<option value="100">100</option>
+				<option value="1000">1000</option>
+				<option value="10000">10000</option>
+				<option value="100000">100000</option>
+				<option value="1000000">1000000</option>
+			</select>
+		</div>
+		<button type="button" class="btn btn-primary" onclick="generar($('#cantidadAleatorios').val());">Generar</button><br><br>
+
+		<div id="matrices" style="max-height: 150px;overflow: scroll;"></div>
+
+		<button id="btnMultiplicar" type="button" class="btn btn-primary" onclick="multiplicar();" style="display: none">Multiplicar</button><br><br>
+
+		<div id="resultadoDinamico" style="max-height: 150px;overflow: scroll;"></div>
+		<div id="resultadoDinamicoTime"></div>
+
+		<div id="resultadoDivideVenceras" style="max-height: 150px;overflow: scroll;"></div>
+		<div id="resultadoDivideVencerasTime"></div>
+
+		<button type="button" class="btn btn-primary" onclick="graficar();">Graficar y comparar</button><br><br>
+
+		<div class="row">
+			<div class="col col-lg-4 col-md-4 col-sm-2">
+				<div id="graficas" style="height: 250px;display: none"></div>
+			</div>
+		</div>
+
+	</div>
+	<script src="./js/jquery-3.3.1.slim.min.js"></script>
+	<script src="./js/moment.min.js"></script>
+	<script src="./js/raphael-min.js"></script>
+	<script src="./js/morris.min.js"></script>
+	<script src="./js/navbar.js"></script>
+	<script src="./js/myJs5.js"></script>
+</body>
+</html>
