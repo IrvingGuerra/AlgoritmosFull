@@ -77,7 +77,7 @@ function mergeSortMethod(array) {
 
 	return merge(mergeSortMethod(left), mergeSortMethod(right));
 }
-function graficar(argument) {
+function graficar() {
 	generar(100);	
 	var times100 = justOrdenar().split(",");
 	generar(1000);	
