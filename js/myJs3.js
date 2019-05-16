@@ -11,16 +11,18 @@ function generar(cant) {
 } 
 
 function calcularTransformadas() {
-	var timeInicial = new Date().getTime();
+	var timeInicial = new Date().getTime(); 
 	$('#resultadoDiscreto').append("<strong>Discreta</strong><br>");
 	transformadaDiscreta(arrayGenerado);
 	var timeFinal = new Date().getTime();
 	var diff1 = (timeFinal - timeInicial)/1000;
-
 	var timeInicial = new Date().getTime();
+	$('#resultadoRapido').append("<strong>Rapida</strong><br>");
 	transformadaRapida(arrayGenerado);
 	var timeFinal = new Date().getTime();
 	var diff2 = (timeFinal - timeInicial)/1000;
+	$('#resultadoDiscretoTime').html("<p>Tiempo transcurrido: "+diff1+" ms</p>");
+	$('#resultadoRapidoTime').html("<p>Tiempo transcurrido: "+diff2+" ms</p>");
 }
 
 //http://www.escuelasuperiordeaudio.com.ve/articles/dtffinalA.pdf
@@ -55,7 +57,117 @@ function transformadaDiscreta(array) { //Se aplica unicamente la formula Discret
 
 
 function transformadaRapida(array) {
+	//Acomodamos el array
+	array = acomodar(array);
+	//Declaramos variables
+	var w = new Array(array.length);
+	var N = array.length;
+	var PI = Math.PI;
+	var euler = new Array(2); //Real e Imaginario
+
+	//Hacemos la formula
+	x = -1*(2*PI) / N;
+	euler[0] = Math.cos(x); //REAL
+	euler[1] = Math.sin(x); //IMAGINARIO con la i
+
+	//Comenzamos a llenar los valores de w
+	for (var i = 0; i < N; i++) {
+		w[i] = new Array(2);
+		if (i==0) { //Primera posicion
+			w[i][0] = 1; //REAL
+ 			w[i][1] = 0; //IMAGINARIO
+		}else{
+			w[i][0] = Math.pow(euler[0],i);
+			w[i][1] = Math.pow(euler[1],i);
+		}
+	}
+
+	//Declaramos nuevas variables
+	var n = 1;
+	var a = N/2;
+
+	var temp1 = new Array(N);
+	var temp2 = new Array(N);
+	var muestreoResultado = new Array(N);
+
+	var arrayR = new Array(N);
+
+	for (var i = 0; i < N; i++) {
+		arrayR[i] = new Array(2);
+		arrayR[i][0] = 0;
+		arrayR[i][1] = 0;
+	}
+
+	for (var i = 0; i < (Math.log(N)/Math.log(2)); i++) { //Entramos la cantidad de mariposas
+		for (var j = 0; j < N; j++) { //Aqui es donde resuelve la transformada de 2 puntos
+			if (!(j & n)) {
+				temp1[j] = new Array(2);
+				temp2[j] = new Array(2);
+				arrayR[j] = new Array(2);
+
+				temp1[j][0] = array[j]; //Posicion real unicamente
+				temp1[j][1] = 0;
+
+				temp2[j][0] = w[(j*a) % (n*a)][0] * array[j+n];
+				temp2[j][1] = w[(j*a) % (n*a)][1] * array[j+n];
+
+				arrayR[j][0] = parseFloat(temp1[j][0]) + parseFloat(temp2[j][0]);
+				arrayR[j][1] = parseFloat(temp1[j][1]) + parseFloat(temp2[j][1]);
+
+				arrayR[j+n][0] = parseFloat(temp1[j][0]) - parseFloat(temp2[j][0]);
+				arrayR[j+n][1] = parseFloat(temp1[j][1]) - parseFloat(temp2[j][1]);
+
+			}
+			
+		}
+		n *= 2;
+		a = a/2;
+	}
+
+	arrayR = acomodar(arrayR);
+
+	for (var i = 0; i < N; i++) {
+
+		muestreoResultado[i] = Math.sqrt(Math.pow(arrayR[i][0],2)+Math.pow(arrayR[i][1],2));
+					
+		$('#resultadoRapido').append("<strong style='color:green'>"+arrayR[i][0]+"</strong> + "
+ 		+"<strong style='color:red'>"+arrayR[i][1]+"i</strong> => Modulo: "+muestreoResultado[i]+" <br>");
+		
+	}
 	
+
+}
+
+
+function acomodar(array) {
+	var longitudBinario = Math.log(array.length)/Math.log(2);
+	var arrayFinal = new Array(array.length);
+	var newBinary = '';
+	for (var i = 0; i < array.length; i++) {
+		newBinary = (i).toString(2);
+		newBinary = addCeros(newBinary,newBinary.length,longitudBinario);
+		//Ahora, invertimos nuestro binario, y ese valor sera el que se ingresara en el arreglo
+		newBinary = newBinary.split(""); 
+		newBinary = newBinary.reverse(); 
+		newBinary = newBinary.join("");
+		var posicion = parseInt(newBinary, 2);
+		arrayFinal[i] = array[posicion];
+	}
+	return arrayFinal;
+}
+
+function addCeros(cadena,tamI,tamF) {
+	var tam = tamF-tamI;
+	cadena = cadena.split(""); 
+	cadena = cadena.reverse(); 
+	cadena = cadena.join("");
+	for (var i = 0; i < tam; i++) {
+		cadena+="0";
+	}
+	cadena = cadena.split(""); 
+	cadena = cadena.reverse(); 
+	cadena = cadena.join("");
+	return cadena;
 }
 
 function getAleatorio(minimo,maximo){
