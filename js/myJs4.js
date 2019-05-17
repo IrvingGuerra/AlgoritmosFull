@@ -1,4 +1,5 @@
 var arrayGenerado = [];
+
 function generar(cant) {
 	var cantidad = cant;
 	arrayGenerado = [];
@@ -33,9 +34,17 @@ function multiplicar() {
 }
 
 function multiplicarDivideYVenceras(array) {
-	// body...
+	var n = array.length;
+	if (n == 3) { //Solo son 2 matrices
+		return array[0]*array[1]*array[2];
+	}else{
+		var min = Infinity;
+		for (var i = 0; i < n-2; i++) {
+			
+		}
+	}
 }
 
 function multiplicarDinamica(array) {
-	// body...
+	
 }
