@@ -1,6 +1,12 @@
 var arrayGenerado = [];
 
-function generar(cant) {
+//Array para el metodo divide y venceras
+var array1 = []; 
+//Array para el metodo dinamico
+var array2 = [];
+var costos = []; //Especial para disminuir tiempo
+
+function generar(cant) { 
 	var cantidad = cant;
 	arrayGenerado = [];
 	for (i=0;i<cantidad;++i) arrayGenerado[i]=i;
@@ -10,6 +16,7 @@ function generar(cant) {
 	$('#arrayGenerado').html("<p>Array generado: "+arrayTexto+"</p>");
 	$('#btnMultiplicar').show();
 } 
+
 function generarNumerosIntoArray(array) {
 	var tmp, current, top = array.length;
 	if(top) while(--top) {
@@ -33,18 +40,69 @@ function multiplicar() {
 	var diff2 = (timeFinal - timeInicial)/1000;
 }
 
+
+//multiplicarDivideYVenceras([30,1,40,10,25]);
+
+
+
 function multiplicarDivideYVenceras(array) {
-	var n = array.length;
-	if (n == 3) { //Solo son 2 matrices
-		return array[0]*array[1]*array[2];
-	}else{
+	array1 = array;
+	var costo = mul2(0,array1.length-1);
+	console.log("El costo fue: "+costo);
+}
+function mul2(inicio, fin) {
+	if(fin-inicio < 2){ //Es una sola matriz
+		return 0;
+	}else if (fin-inicio == 2) { //Caso base, solo son 2 matrices
+		return array1[inicio]*array1[inicio+1]*array1[inicio+2];
+	}else{ //Empieza el ciclo
 		var min = Infinity;
-		for (var i = 0; i < n-2; i++) {
-			
+		for (var i = inicio+1; i <= fin-1; i++) {
+			var c1 = mul2(inicio,i);
+			var c2 = mul2(i,fin);
+			var c3 = array1[inicio] * array1[i] * array1[fin];
+			if (c1+c2+c3 < min) {
+				min = c1+c2+c3;
+			}
 		}
+		return min;
 	}
 }
 
+//multiplicarDinamica([30,1,40,10,25]);
+
+
+
 function multiplicarDinamica(array) {
-	
+	array2 = array;
+	costos = new Array(array2.length).fill(-1).map(() => new Array(array2.length).fill(-1));
+	var costo = mul2D(0,array2.length-1);
+	console.log("El costo fue: "+costo);
+	console.log(costos);
+}
+function mul2D(inicio, fin) {
+	if(fin-inicio < 2){ //Es una sola matriz
+		return costos[inicio][fin] = 0;
+	}else if (fin-inicio == 2) { //Caso base, solo son 2 matrices
+		if (costos[inicio][fin] == -1) {
+			costos[inicio][fin] = array2[inicio]*array2[inicio+1]*array2[inicio+2];
+		}
+		return costos[inicio][fin];
+	}else{ //Empieza el ciclo
+		var min = Infinity;
+		if (costos[inicio][fin]==-1) {
+			for (var i = inicio+1; i <= fin-1; i++) {
+				var c1 = mul2D(inicio,i);
+				var c2 = mul2D(i,fin);
+				var c3 = array2[inicio] * array2[i] * array2[fin];
+				if (c1+c2+c3 < min) {
+					min = c1+c2+c3;
+					costos[inicio][fin] = min;
+				}
+			}
+		}else{
+			return costos[inicio][fin];
+		}
+		return min;
+	}
 }
