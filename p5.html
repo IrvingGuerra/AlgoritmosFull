@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
 	<link rel="shortcut icon" type="image/x-icon" href="./favicon.ico"> 
-</head>
+</head> 
 <body>
 
 	<div class="topnav" id="myTopnav">
@@ -28,8 +28,20 @@
 		<div class="form-group">
 		    <select class="custom-select" id="cantidadAleatorios" required>
 				<option value="">Seleccione una cantidad</option>
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="50">50</option>
 				<option value="100">100</option>
 				<option value="1000">1000</option>
+				<option value="2000">2000</option>
+				<option value="3000">3000</option>
+				<option value="4000">4000</option>
+				<option value="5000">5000</option>
+				<option value="6000">6000</option>
+				<option value="7000">7000</option>
+				<option value="8000">8000</option>
+				<option value="9000">9000</option>
 				<option value="10000">10000</option>
 				<option value="100000">100000</option>
 				<option value="1000000">1000000</option>
@@ -37,15 +49,17 @@
 		</div>
 		<button type="button" class="btn btn-primary" onclick="generar($('#cantidadAleatorios').val());">Generar</button><br><br>
 
-		<div id="matrices" style="max-height: 150px;overflow: scroll;"></div>
+		<div id="stringR" style="max-height: 150px;overflow: scroll;"></div>
+		<div id="stringL" style="max-height: 150px;overflow: scroll;"></div>
 
-		<button id="btnMultiplicar" type="button" class="btn btn-primary" onclick="multiplicar();" style="display: none">Multiplicar</button><br><br>
+		<button id="btnCalcular" type="button" class="btn btn-primary" onclick="calcular();" style="display: none">Multiplicar</button><br><br>
+
+		<div id="resultadoDivideVenceras" style="max-height: 150px;overflow: scroll;"></div>
+		<div id="resultadoDivideVencerasTime"></div>
 
 		<div id="resultadoDinamico" style="max-height: 150px;overflow: scroll;"></div>
 		<div id="resultadoDinamicoTime"></div>
 
-		<div id="resultadoDivideVenceras" style="max-height: 150px;overflow: scroll;"></div>
-		<div id="resultadoDivideVencerasTime"></div>
 
 		<button type="button" class="btn btn-primary" onclick="graficar();">Graficar y comparar</button><br><br>
 
