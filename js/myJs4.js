@@ -82,13 +82,11 @@ function mul2(inicio, fin) {
 
 //multiplicarDinamica([30,1,40,10,25]);
 
-
-
 function multiplicarDinamica(array) {
 	array2 = array;
 	costos = new Array(array2.length).fill(-1).map(() => new Array(array2.length).fill(-1));
 	var costo = mul2D(0,array2.length-1);
-	console.log(costos);
+	//console.log(costos);
 	return costo;
 }
 function mul2D(inicio, fin) {
@@ -135,8 +133,14 @@ function graficar() {
 	var times16 = justDoAlgorithm().split(",");
 	generar(18);	
 	var times18 = justDoAlgorithm().split(",");
+	generar(19);	
+	var times19 = justDoAlgorithm().split(",");
 	generar(20);	
 	var times20 = justDoAlgorithm().split(",");
+	generar(21);	
+	var times21 = justDoAlgorithm().split(",");
+	generar(22);	
+	var times22 = justDoAlgorithm().split(",");
 
 	$("#graficas").show();
 	new Morris.Line({
@@ -150,7 +154,10 @@ function graficar() {
 	    { second: '14', value: times14[0] , value2: times14[1]},
 	    { second: '16', value: times16[0] , value2: times16[1]},
 	    { second: '18', value: times18[0] , value2: times18[1]},
-	    { second: '20', value: times20[0] , value2: times20[1]}
+	    { second: '19', value: times19[0] , value2: times19[1]},
+	    { second: '20', value: times20[0] , value2: times20[1]},
+	    { second: '21', value: times21[0] , value2: times21[1]},
+	    { second: '22', value: times22[0] , value2: times22[1]}
 	  ],
 	  xkey: 'second',
 	  ykeys: ['value', 'value2'],
