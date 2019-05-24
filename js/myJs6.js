@@ -129,21 +129,22 @@ function kapsackDinamico(g,p,max) {
 
 
 function graficar() {
-    generar(4); 
+    generar(4,$('#Wmax').val()); 
     var times4 = justDoAlgorithm().split(",");
-    generar(6); 
+    generar(6,$('#Wmax').val()); 
     var times6 = justDoAlgorithm().split(",");
-    generar(8); 
+    generar(8,$('#Wmax').val()); 
     var times8 = justDoAlgorithm().split(",");
-    generar(10);    
+    generar(10,$('#Wmax').val());    
     var times10 = justDoAlgorithm().split(",");
-    generar(12);    
+    generar(12,$('#Wmax').val());  
     var times12 = justDoAlgorithm().split(",");
-    generar(14);    
+    generar(14,$('#Wmax').val());   
     var times14 = justDoAlgorithm().split(",");
-    generar(16);    
+    generar(16,$('#Wmax').val());   
     var times16 = justDoAlgorithm().split(",");
-    generar(18);    
+    generar(18,$('#Wmax').val()); 
+    var times18 = justDoAlgorithm().split(",");   
 
     $("#graficas").show();
     new Morris.Line({
