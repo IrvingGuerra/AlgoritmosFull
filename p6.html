@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 	<title>Analisis de Algoritmos</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="./css/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -28,6 +28,7 @@
 		<div class="form-group">
 		    <select class="custom-select" id="cantidadAleatorios" required>
 				<option value="">Seleccione una cantidad</option>
+				<option value="4">4</option>
 				<option value="100">100</option>
 				<option value="1000">1000</option>
 				<option value="10000">10000</option>
@@ -35,7 +36,10 @@
 				<option value="1000000">1000000</option>
 			</select>
 		</div>
-		<button type="button" class="btn btn-primary" onclick="generar($('#cantidadAleatorios').val());">Generar</button><br><br>
+		<label>Ingrese el tamaño maximo de la mochila </label>
+		<input type="number" id="Wmax" value="8"><br>
+
+		<button type="button" class="btn btn-primary" onclick="generar($('#cantidadAleatorios').val(),$('#Wmax').val());">Generar</button><br><br>
 
 		<div id="matrices" style="max-height: 150px;overflow: scroll;"></div>
 
