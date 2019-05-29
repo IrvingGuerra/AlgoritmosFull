@@ -17,14 +17,16 @@
 	  <a href="p3.html">Practica 3</a>
 	  <a href="p4.html">Practica 4</a>
 	  <a href="p5.html">Practica 5</a>
-	  <a href="p6.html" class="active">Practica 6</a>
+	  <a href="p6.html">Practica 7</a>
+	  <a href="p7.html" class="active">Practica 7</a>
+	  <a href="p8.html">Practica 8</a>
 	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
 	    <i class="fa fa-bars"></i>
 	  </a>
 	</div>	
 
 	<div class="container">
-		<label>Ingrese la longitud de productos que existiran en la mochila</label>
+		<label>Ingrese la cantidad de procesos</label>
 		<div class="form-group">
 		    <select class="custom-select" id="cantidadAleatorios" required>
 				<option value="">Seleccione una cantidad</option>
@@ -45,21 +47,19 @@
 				<option value="1000000">1000000</option>
 			</select>
 		</div>
-		<label>Ingrese el tamaño maximo de la mochila </label>
-		<input type="number" id="Wmax" value="8"><br>
 
-		<button type="button" class="btn btn-primary" onclick="generar($('#cantidadAleatorios').val(),$('#Wmax').val());">Generar</button><br><br>
+		<button type="button" class="btn btn-primary" onclick="generar($('#cantidadAleatorios').val());">Generar</button><br><br>
 
-		<div id="ganancias" style="max-height: 150px;overflow: scroll;"></div>
-		<div id="pesos" style="max-height: 150px;overflow: scroll;"></div>
+		<div id="procesos" style="max-height: 150px;overflow: scroll;"></div>
 
 		<button id="btnCalcular" type="button" class="btn btn-primary" onclick="calcular();" style="display: none">Calcular</button><br><br>
 
 		<div id="resultadoFuerza" style="max-height: 150px;overflow: scroll;"></div>
 		<div id="resultadoFuerzaTime"></div>
 
-		<div id="resultadoDinamico" style="max-height: 150px;overflow: scroll;"></div>
-		<div id="resultadoDinamicoTime"></div>
+		<div id="resultadoVorazProcesos" style="max-height: 150px;overflow: scroll;"></div>
+		<div id="resultadoVorazProcesosTiempo" style="max-height: 150px;overflow: scroll;"></div>
+		<div id="resultadoVorazTime"></div>
 
 		<button type="button" class="btn btn-primary" onclick="graficar();">Graficar y comparar</button><br><br>
 
