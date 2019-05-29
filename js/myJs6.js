@@ -1,7 +1,7 @@
 var g = [];    //Ganancia de los productos
 var p = [];    //Peso de los productos
 
-var wMax = 0;
+var wMax = 0; 
 var n = 0;
 
 function generar(items,pesoMax) { 
