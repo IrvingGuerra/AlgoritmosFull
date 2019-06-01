@@ -3,7 +3,7 @@ var p = [];    //Procesos
 var n = 0;
 
 function generar(cantidad) {
-	n = cantidad;
+	n = cantidad; 
 	p = generarArray(cantidad-1);
 	$('#procesos').html("<strong>Procesos y su tiempo: </strong>");
 	for (var i = 0; i < p.length; i++) {
@@ -30,14 +30,31 @@ function calcular() {
 
 function algoritmoFuerzaBruta(array) {
 	var results = [];
+	//Obtenemos todas las permutaciones posibles
+	var results = perm(array);
+	var vector = [];
 
-	for (var i = 0; i < array.length - 1; i++) {
-		for (var j = i + 1; j < array.length; j++) {
-		results.push(array[i] + ' ' + array[j]);
+	var time = Infinity;
+	for (var i = 0; i < results.length; i++) {
+		//Recorremos cada permutacion y calculamos el tiempo
+		var arrayTiemposFinales = [];
+		var newTime = 0;
+		for (var j = 0; j < results[i].length-1; j++) {
+			newTime += results[i][j];
+			arrayTiemposFinales[j] = newTime;
+		}
+		newTime = 0;
+		for (var j = 0; j < arrayTiemposFinales.length; j++) {
+			newTime+=arrayTiemposFinales[j];
+		}
+		if (newTime<time) {
+			time = newTime;
+			vector = arrayTiemposFinales;
 		}
 	}
-
-	console.log(results);
+	var arrayTexto = vector.toString().replace(/,/g, ', ');
+	$('#resultadoFuerzaProcesos').html("<strong>Procesos ordenados: </strong> 0, "+arrayTexto);
+	$('#resultadoFuerzaProcesosTiempo').html("<strong>Tiempo total: </strong>"+time);
 }
 
 function algoritmoVoraz(p) {
@@ -100,4 +117,21 @@ function addCeros(cadena,tamI,tamF) {
     cadena = cadena.reverse(); 
     cadena = cadena.join("");
     return cadena;
+}
+
+function perm(xs) {
+  let ret = [];
+
+  for (let i = 0; i < xs.length; i = i + 1) {
+    let rest = perm(xs.slice(0, i).concat(xs.slice(i + 1)));
+
+    if(!rest.length) {
+      ret.push([xs[i]])
+    } else {
+      for(let j = 0; j < rest.length; j = j + 1) {
+        ret.push([xs[i]].concat(rest[j]))
+      }
+    }
+  }
+  return ret;
 }
