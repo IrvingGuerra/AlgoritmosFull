@@ -13,19 +13,18 @@ function generar(cantidad) {
 }
 
 function calcular() {
-	//Ordenamos
 	var timeInicial = new Date().getTime(); 
     algoritmoVoraz(p);
     var timeFinal = new Date().getTime();
     var diff1 = (timeFinal - timeInicial)/1000;
     $('#resultadoVorazTime').html("<p>Tiempo transcurrido: "+diff1+" ms</p>");
-
-	var timeInicial = new Date().getTime(); 
-    algoritmoFuerzaBruta(p);
-    var timeFinal = new Date().getTime();
-    var diff2 = (timeFinal - timeInicial)/1000;
-    $('#resultadoFuerzaTime').html("<p>Tiempo transcurrido: "+diff2+" ms</p>");
-
+    if (n<=10) {
+    	var timeInicial = new Date().getTime(); 
+	    algoritmoFuerzaBruta(p);
+	    var timeFinal = new Date().getTime();
+	    var diff2 = (timeFinal - timeInicial)/1000;
+	    $('#resultadoFuerzaTime').html("<p>Tiempo transcurrido: "+diff2+" ms</p>");
+    }
 }
 
 function algoritmoFuerzaBruta(array) {
@@ -53,7 +52,8 @@ function algoritmoFuerzaBruta(array) {
 		}
 	}
 	var arrayTexto = vector.toString().replace(/,/g, ', ');
-	$('#resultadoFuerzaProcesos').html("<strong>Procesos ordenados: </strong> 0, "+arrayTexto);
+  $('#resultadoFuerzaProcesos').html("<strong style='color:red'>Fuerza Bruta</strong><br><br>");
+	$('#resultadoFuerzaProcesos').append("<strong>Procesos ordenados: </strong> 0, "+arrayTexto);
 	$('#resultadoFuerzaProcesosTiempo').html("<strong>Tiempo total: </strong>"+time);
 }
 
@@ -61,7 +61,8 @@ function algoritmoVoraz(p) {
 	var tiempoFinalVoraz = 0;
 	var arrayTiemposFinales = [];
 	var pOrdenado = sortWithIndeces(p);
-	$('#resultadoVorazProcesos').html("<strong>Procesos ordenados: </strong>");
+  $('#resultadoVorazProcesos').html("<strong style='color:red'>Voraz</strong><br><br>");
+	$('#resultadoVorazProcesos').append("<strong>Procesos ordenados: </strong>");
 	for (var i = 0; i < pOrdenado.sortIndices.length; i++) {
 		if (i == 0) {
 			arrayTiemposFinales[i] = 0;
@@ -77,6 +78,48 @@ function algoritmoVoraz(p) {
 		time+=arrayTiemposFinales[i];
 	}
 	$('#resultadoVorazProcesosTiempo').html("<strong>Tiempo total: </strong>"+time);
+} 
+
+
+function graficar() {
+	generar(4); 
+    var times4 = justDoAlgorithm().split(",");
+    generar(6); 
+    var times6 = justDoAlgorithm().split(",");
+    generar(8); 
+    var times8 = justDoAlgorithm().split(",");
+    generar(10);    
+    var times10 = justDoAlgorithm().split(",");  
+
+    $("#graficas").show();
+    new Morris.Line({
+      element: 'graficas',
+      data: [
+        { second: '4', value: times4[0] , value2: times4[1]},
+        { second: '6', value: times6[0] , value2: times6[1]},
+        { second: '8', value: times8[0] , value2: times8[1]},
+        { second: '10', value: times10[0] , value2: times10[1]}
+      ],
+      xkey: 'second',
+      ykeys: ['value', 'value2'],
+      labels: ['Voraz', 'Fuerza Bruta'],
+      parseTime: false,
+      resize: true,
+      lineWidth: 1,
+      lineColors: ['red','blue']
+    });
+}
+
+function justDoAlgorithm() {
+    var timeInicial = new Date().getTime(); 
+    algoritmoVoraz(p);
+    var timeFinal = new Date().getTime();
+    var diff1 = (timeFinal - timeInicial)/1000;
+    var timeInicial = new Date().getTime();
+    algoritmoFuerzaBruta(p);
+    var timeFinal = new Date().getTime();
+    var diff2 = (timeFinal - timeInicial)/1000;
+    return diff1+","+diff2;
 }
 
 function generarArray(cant) {
