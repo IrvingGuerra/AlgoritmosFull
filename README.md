@@ -34,7 +34,7 @@ En este repositorio se usaron las siguientes tecnologias.
 
 * [morrisjS](https://morrisjs.github.io/morris.js/) - HTML enhanced for web apps!
 * [Bootstrap 3](http://breakdance.io) - Libreria de estilos css
-* [jQuery] - Para mejor obtencion de elementos HTML
+* [jQuery](https://jquery.com/) - Para mejor obtencion de elementos HTML
  
 ### Instalación
 
