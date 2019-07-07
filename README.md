@@ -2,7 +2,8 @@
 
 Todas las practicas del Dr. Flavio Arturo Sánchez Garfias en la materia: Analisis de Algoritmos, de la Escuela Superior de Computo
 
-# Demostracion: LIVE-DEMO: https://irvingguerra.github.io/AlgoritmosFull/index.html
+# LIVE-DEMO: 
+> https://irvingguerra.github.io/AlgoritmosFull/index.html
 
 Este repositorio contiene: 
   - HTML, CSS, y JS de una WEB completa y responsive.
@@ -23,6 +24,8 @@ Este repositorio tambien contiene.
 
   - Cada practica tiene su propio graficador y comparador de algoritmos
   - Cada practica cuenta con su Reporte en formato Word
+
+> NOTA: Al graficar cada practica puede tomar hasta 10 minutos.
 
 Tener en cuenta que:
   - Para que el graficador funcione, necesita contar con la libreria morris.js que ya se incluye en este repositorio
