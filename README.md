@@ -20,7 +20,7 @@ Este repositorio tambien contiene.
 
   - Cada practica tiene su propio graficador y comparador de algoritmos
   - Cada practica cuenta con su Reporte en formato Word
-  - 
+
 Tener en cuenta que:
   - Para que el graficador funcione, necesita contar con la libreria morris.js que ya se incluye en este repositorio
 
