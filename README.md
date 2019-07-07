@@ -1,4 +1,4 @@
-# Practicas: Analisis de Algoritmos
+# Analisis de Algoritmos
 
 Todas las practicas del Dr. Flavio Arturo Sánchez Garfias en la materia: Analisis de Algoritmos, de la Escuela Superior de Computo
 
