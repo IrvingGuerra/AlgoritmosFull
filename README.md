@@ -3,7 +3,7 @@
 Todas las practicas del Dr. Flavio Arturo Sánchez Garfias en la materia: Analisis de Algoritmos, de la Escuela Superior de Computo
 
 # LIVE-DEMO: 
-> https://irvingguerra.github.io/AlgoritmosFull/index.html
+> https://irvingguerra.github.io/AlgoritmosFull
 
 Este repositorio contiene: 
   - HTML, CSS, y JS de una WEB completa y responsive.
