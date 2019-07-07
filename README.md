@@ -55,3 +55,5 @@ Si requiere ponerse en contacto con el desarrollador de este repositorio, escrib
 | Github | https://github.com/IrvingGuerra |
 | Google | guerravargasirving@gmail.com |
 | IPN | iguerrav1500@alumno.ipn.mx |
+
+ > NOTA: Si desea que este repositorio este más completo, contactar con el desarrollador para compartir sus archivos, programas o reportes y estos puedan ser anexados.
