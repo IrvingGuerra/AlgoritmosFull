@@ -32,7 +32,7 @@ Si desea descargar la libreria por separado, consulte:
 
 En este repositorio se usaron las siguientes tecnologias.
 
-* [morrisjS](https://morrisjs.github.io/morris.js/) - HTML enhanced for web apps!
+* [morrisjS](https://morrisjs.github.io/morris.js/) - Libreria JS para graficar
 * [Bootstrap 3](http://breakdance.io) - Libreria de estilos css
 * [jQuery](https://jquery.com/) - Para mejor obtencion de elementos HTML
  
